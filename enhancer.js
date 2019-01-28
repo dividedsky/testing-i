@@ -18,32 +18,41 @@ exports.fail = item => {
   return item;
 };
 
+exports.success = item => {
+  if (item.enhancement < 20) item.enhancement++;
+  return item;
+}
+
 const setPrefix = item => {
     switch (item.enhancement) {
       case 16:
-        item.prefix = '[PRI]';
+        item.prefix = '[PRI] ';
         break;
       case 17:
-        item.prefix = '[DUO]';
+        item.prefix = '[DUO] ';
         break;
       case 18:
-        item.prefix = '[TRI]';
+        item.prefix = '[TRI] ';
         break;
       case 19:
-        item.prefix = '[TET]';
+        item.prefix = '[TET] ';
         break;
       case 20:
-        item.prefix = '[PEN]';
+        item.prefix = '[PEN] ';
+        break;
+      case 0:
+        item.prefix = '';
         break;
       default:
         item.prefix = `[+${item.enhancement}]`;
   }
-  item.name = item.prefix + ' ' + item.baseName;
+  item.name = item.prefix + item.baseName;
 };
 
 const testItem = {
   baseName: 'sword of swordiness',
-  prefix: null,
-  enchantment: 12,
+  enhancement: 0,
   durability: 70
 };
+setPrefix(testItem);
+
