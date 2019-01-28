@@ -20,6 +20,7 @@ exports.fail = item => {
 
 exports.success = item => {
   if (item.enhancement < 20) item.enhancement++;
+  setPrefix(item);
   return item;
 }
 

@@ -105,6 +105,16 @@ describe('enhancer library', () => {
       };
       const actual = enhancer.success(item);
       expect(actual.enhancement).toBe(expected.enhancement);
+    });
+    it('should not increase the enchantment above 20', () => {
+      const item = {
+        enhancement: 20
+      };
+      const expected = {
+        enhancement: 20
+      };
+      const actual = enhancer.success(item);
+      expect(actual.enhancement).toBe(expected.enhancement);
     })
     it('should update the name to reflect new enhancement', () => {
       const item = {
@@ -121,7 +131,8 @@ describe('enhancer library', () => {
         enhancement: 19,
         durability: 70,
       };
-
+      const actual = enhancer.success(item);
+      expect(actual).toEqual(expected);
     })
   })
   });
